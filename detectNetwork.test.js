@@ -278,7 +278,7 @@ describe('Maestro', function() {
   it('has prefix of 5038 and a length of 19', function() {
     expect(detectNetwork('5038123412341234567')).to.equal('Maestro');
   });
-    it('has prefix of 6304 and a length of 12', function() {
+  it('has prefix of 6304 and a length of 12', function() {
     expect(detectNetwork('630412341234')).to.equal('Maestro');
   });
   it('has prefix of 6304 and a length of 13', function() {
@@ -304,5 +304,32 @@ describe('Maestro', function() {
   });
 });
 
-describe('should support China UnionPay')
+var expect = chai.expect;
+
+describe('China UnionPay', function() {
+   
+  for (var prefix = 622126; prefix <= 622925; prefix++) {
+ 
+    (function(prefix) {
+   
+      it('has a prefix of ' + prefix + ' and a length of 16', function() {
+       expect(detectNetwork(prefix.toString() + '1234567891')).to.equal('China UnionPay');
+      });
+      
+      it('has a prefix of ' + prefix + ' and a length of 17', function() {
+       expect(detectNetwork(prefix.toString() + '12345678912')).to.equal('China UnionPay');
+      });
+      
+      it('has a prefix of ' + prefix + ' and a length of 18', function() {
+       expect(detectNetwork(prefix.toString() + '123456789123')).to.equal('China UnionPay');
+      });
+      
+      it('has a prefix of ' + prefix + ' and a length of 19', function() {
+       expect(detectNetwork(prefix.toString() + '1234567891234')).to.equal('China UnionPay');
+      });
+   
+    })(prefix)
+  }
+});
+
 describe('should support Switch')
