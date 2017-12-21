@@ -32,7 +32,7 @@ var detectNetwork = function(cardNumber) {
     return "American Express";
   } else if ([51, 52, 53, 54, 55].includes(twoDigitIdentifier) && [16].includes(cardNumberArray.length)) {
     return "MasterCard";
-  } else if (([4903, 4905, 4911, 4936, 6333, 6759].includes(fourDigitIdentifier) || [564182, 633110].includes(sixDigitIdentifier)) && [13, 16, 19].includes(cardNumberArray.length)) {
+  } else if (([4903, 4905, 4911, 4936, 6333, 6759].includes(fourDigitIdentifier) || [564182, 633110].includes(sixDigitIdentifier)) && [16, 18, 19].includes(cardNumberArray.length)) {
   	return "Switch";
   } else if (([644, 645, 646, 647, 648, 649].includes(threeDigitIdentifier) || [6011].includes(fourDigitIdentifier) || [65].includes(twoDigitIdentifier)) && [16, 19].includes(cardNumberArray.length)) {
   	return "Discover";
