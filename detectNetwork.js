@@ -12,13 +12,20 @@ var detectNetwork = function(cardNumber) {
   // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
   // The American Express network always starts with a 34 or 37 and is 15 digits long
   var cardNumberArray = cardNumber.split('');
-  var twoDigitIdentifier = cardNumberArray[0] + cardNumberArray[1];
+  var twoDigitIdentifier = Number(cardNumberArray[0] + cardNumberArray[1]);
+  var oneDigitIdentifier = Number(cardNumberArray[0]);
+
   
-  if ((twoDigitIdentifier === '38' || twoDigitIdentifier === '39') && cardNumberArray.length === 14) {
+  if ([38, 39].includes(twoDigitIdentifier)) && [14].includes(cardNumberArray.length) {
     return "Diner's Club";
-  } else if ((twoDigitIdentifier === '34' || twoDigitIdentifier === '37') && cardNumberArray.length === 15) {
+  } else if ([34, 37].includes(twoDigitIdentifier)) && [15].includes(cardNumberArray.length) {
     return "American Express";
+  } else if ([51, 52, 53, 54, 55].includes(twoDigitIdentifier)) && [16].includes(cardNumberArray.length) {
+    return "MasterCard";
+  } else if ([4].includes(oneDigitIdentifier) && [13, 16, 19].includes(cardNumberArray.length)) {
+  	return "Visa";
   }
+
   // Once you've read this, go ahead and try to implement this function, then return to the console.
 }
 
