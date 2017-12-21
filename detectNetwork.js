@@ -11,7 +11,7 @@ var detectNetwork = function(cardNumber) {
   // Note: `cardNumber` will always be a string
   // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
   // The American Express network always starts with a 34 or 37 and is 15 digits long
-  
+
   var cardNumberArray = cardNumber.split('');
   var twoDigitIdentifier = Number(cardNumberArray[0] + cardNumberArray[1]);
   var oneDigitIdentifier = Number(cardNumberArray[0]);
@@ -27,7 +27,7 @@ var detectNetwork = function(cardNumber) {
     return "MasterCard";
   } else if ([4].includes(oneDigitIdentifier) && [13, 16, 19].includes(cardNumberArray.length)) {
   	return "Visa";
-  } else if (([644, 645, 646, 647, 648, 649].includes(threeDigitIdentifier) || [6011].includes(fourDigitIdentifier)) && [16, 19].includes(cardNumberArray.length)) {
+  } else if (([644, 645, 646, 647, 648, 649].includes(threeDigitIdentifier) || [6011].includes(fourDigitIdentifier) || [65].includes(twoDigitIdentifier)) && [16, 19].includes(cardNumberArray.length)) {
   	return "Discover";
   } else if ([5018, 5020, 5038, 6304].includes(fourDigitIdentifier) && [12, 13, 14, 15, 16, 17, 18, 19].includes(cardNumberArray.length)) {
   	return "Maestro";

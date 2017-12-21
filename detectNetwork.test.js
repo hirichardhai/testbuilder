@@ -151,6 +151,56 @@ describe('Discover', function() {
   it('has a prefix of 6011 and a length of 19', function () {
     expect(detectNetwork('6011123412341234123')).to.equal('Discover');
   });
+  it('has a prefix of 644 and a length of 16', function() {
+    expect(detectNetwork('6441234123412341')).to.equal('Discover');
+  });
+
+  it('has a prefix of 644 and a length of 19', function () {
+    expect(detectNetwork('6441234123412341231')).to.equal('Discover');
+  });
+  it('has a prefix of 645 and a length of 16', function() {
+    expect(detectNetwork('6451234123412341')).to.equal('Discover');
+  });
+
+  it('has a prefix of 645 and a length of 19', function () {
+    expect(detectNetwork('6451234123412341231')).to.equal('Discover');
+  });
+  it('has a prefix of 646 and a length of 16', function() {
+    expect(detectNetwork('6461234123412341')).to.equal('Discover');
+  });
+
+  it('has a prefix of 646 and a length of 19', function () {
+    expect(detectNetwork('6461234123412341231')).to.equal('Discover');
+  });
+  it('has a prefix of 647 and a length of 16', function() {
+    expect(detectNetwork('6471234123412341')).to.equal('Discover');
+  });
+
+  it('has a prefix of 647 and a length of 19', function () {
+    expect(detectNetwork('6471234123412341231')).to.equal('Discover');
+  });
+  it('has a prefix of 648 and a length of 16', function() {
+    expect(detectNetwork('6481234123412341')).to.equal('Discover');
+  });
+
+  it('has a prefix of 648 and a length of 19', function () {
+    expect(detectNetwork('6481234123412341231')).to.equal('Discover');
+  });
+  it('has a prefix of 649 and a length of 16', function() {
+    expect(detectNetwork('6491234123412341')).to.equal('Discover');
+  });
+
+  it('has a prefix of 649 and a length of 19', function () {
+    expect(detectNetwork('6491234123412341231')).to.equal('Discover');
+  });
+  it('has a prefix of 65 and a length of 16', function() {
+    expect(detectNetwork('6512123412341234')).to.equal('Discover');
+  });
+
+  it('has a prefix of 65 and a length of 19', function () {
+    expect(detectNetwork('6512123412341234123')).to.equal('Discover');
+  });
+
 });
 
 describe('Maestro', function() {
