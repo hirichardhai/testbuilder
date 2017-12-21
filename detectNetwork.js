@@ -14,6 +14,8 @@ var detectNetwork = function(cardNumber) {
   var cardNumberArray = cardNumber.split('');
   var twoDigitIdentifier = Number(cardNumberArray[0] + cardNumberArray[1]);
   var oneDigitIdentifier = Number(cardNumberArray[0]);
+  var threeDigitIdentifier = Number(cardNumberArray[0] + cardNumberArray[1] + cardNumberArray[2]);
+  var fourDigitIdentifier = Number(cardNumberArray[0] +cardNumberArray[1] + cardNumberArray[2] +cardNumberArray[3]);
 
   
   if ([38, 39].includes(twoDigitIdentifier) && [14].includes(cardNumberArray.length)) {
@@ -24,8 +26,11 @@ var detectNetwork = function(cardNumber) {
     return "MasterCard";
   } else if ([4].includes(oneDigitIdentifier) && [13, 16, 19].includes(cardNumberArray.length)) {
   	return "Visa";
+  } else if (([644, 645, 646, 647, 648, 649].includes(threeDigitIdentifier) || [6011].includes(fourDigitIdentifier)) && [16, 19].includes(cardNumberArray.length)) {
+  	return "Discover";
+  } else if ([5018, 5020, 5038, 6304].includes(fourDigitIdentifier) && [12, 13, 14, 15, 16, 17, 18, 19].includes(cardNumberArray.length)) {
+  	return "Maestro";
   }
-
   // Once you've read this, go ahead and try to implement this function, then return to the console.
 }
 
