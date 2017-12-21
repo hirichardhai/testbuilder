@@ -16,7 +16,14 @@ var detectNetwork = function(cardNumber) {
   var twoDigitIdentifier = Number(cardNumberArray[0] + cardNumberArray[1]);
   var oneDigitIdentifier = Number(cardNumberArray[0]);
   var threeDigitIdentifier = Number(cardNumberArray[0] + cardNumberArray[1] + cardNumberArray[2]);
-  var fourDigitIdentifier = Number(cardNumberArray[0] +cardNumberArray[1] + cardNumberArray[2] +cardNumberArray[3]);
+  var fourDigitIdentifier = Number(cardNumberArray[0] + cardNumberArray[1] + cardNumberArray[2] + cardNumberArray[3]);
+  var sixDigitIdentifier = Number(cardNumberArray[0] + cardNumberArray[1] + cardNumberArray[2] + cardNumberArray[3] + cardNumberArray[4] + cardNumberArray[5]);
+  var ChinaUnionPayArray = []
+
+  for (i = 622126; i <= 622925; i++) {
+  	ChinaUnionPayArray.push(i)
+  }
+
 
   
   if ([38, 39].includes(twoDigitIdentifier) && [14].includes(cardNumberArray.length)) {
@@ -25,12 +32,16 @@ var detectNetwork = function(cardNumber) {
     return "American Express";
   } else if ([51, 52, 53, 54, 55].includes(twoDigitIdentifier) && [16].includes(cardNumberArray.length)) {
     return "MasterCard";
-  } else if ([4].includes(oneDigitIdentifier) && [13, 16, 19].includes(cardNumberArray.length)) {
-  	return "Visa";
+  } else if (([4903, 4905, 4911, 4936, 6333, 6759].includes(fourDigitIdentifier) || [564182, 633110].includes(sixDigitIdentifier)) && [13, 16, 19].includes(cardNumberArray.length)) {
+  	return "Switch";
   } else if (([644, 645, 646, 647, 648, 649].includes(threeDigitIdentifier) || [6011].includes(fourDigitIdentifier) || [65].includes(twoDigitIdentifier)) && [16, 19].includes(cardNumberArray.length)) {
   	return "Discover";
   } else if ([5018, 5020, 5038, 6304].includes(fourDigitIdentifier) && [12, 13, 14, 15, 16, 17, 18, 19].includes(cardNumberArray.length)) {
   	return "Maestro";
+  } else if ((ChinaUnionPayArray.includes(sixDigitIdentifier) || [624, 625, 626].includes(threeDigitIdentifier) || [6282, 6283, 6284, 6285, 6286, 6287, 6288].includes(fourDigitIdentifier)) && [16, 17, 18, 19].includes(cardNumberArray.length)) {
+  	return "China UnionPay";
+  } else if ([4].includes(oneDigitIdentifier) && [13, 16, 19].includes(cardNumberArray.length)) {
+  	return "Visa";
   }
   // Once you've read this, go ahead and try to implement this function, then return to the console.
 }
