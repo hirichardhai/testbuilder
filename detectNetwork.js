@@ -16,11 +16,11 @@ var detectNetwork = function(cardNumber) {
   var oneDigitIdentifier = Number(cardNumberArray[0]);
 
   
-  if ([38, 39].includes(twoDigitIdentifier)) && [14].includes(cardNumberArray.length) {
+  if ([38, 39].includes(twoDigitIdentifier) && [14].includes(cardNumberArray.length)) {
     return "Diner's Club";
-  } else if ([34, 37].includes(twoDigitIdentifier)) && [15].includes(cardNumberArray.length) {
+  } else if ([34, 37].includes(twoDigitIdentifier) && [15].includes(cardNumberArray.length)) {
     return "American Express";
-  } else if ([51, 52, 53, 54, 55].includes(twoDigitIdentifier)) && [16].includes(cardNumberArray.length) {
+  } else if ([51, 52, 53, 54, 55].includes(twoDigitIdentifier) && [16].includes(cardNumberArray.length)) {
     return "MasterCard";
   } else if ([4].includes(oneDigitIdentifier) && [13, 16, 19].includes(cardNumberArray.length)) {
   	return "Visa";
